@@ -1,0 +1,15 @@
+[2022-03-18T16:14:20.917Z] Validating found git in: git
+[2022-03-18T16:14:20.988Z] Using git 2.25.1 from git
+[2022-03-18T16:16:28.118Z] > git rev-parse --git-dir [1ms]
+[2022-03-18T16:16:28.125Z] Open repository: /var/www/html/MedApp
+[2022-03-18T16:16:28.154Z] > git symbolic-ref --short HEAD [1ms]
+[2022-03-18T16:16:28.163Z] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/master refs/remotes/master [2ms]
+[2022-03-18T16:16:28.182Z] > git remote --verbose [5ms]
+[2022-03-18T16:16:28.182Z] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [12ms]
+[2022-03-18T16:16:28.215Z] > git config --get commit.template [3ms]
+[2022-03-18T16:16:28.703Z] > git ls-files --stage -- /var/www/html/MedApp/resources/views/layouts/app.blade.php [3ms]
+[2022-03-18T16:16:30.093Z] > git symbolic-ref --short HEAD [1ms]
+[2022-03-18T16:16:30.106Z] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/master refs/remotes/master [1ms]
+[2022-03-18T16:16:30.123Z] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [9ms]
+[2022-03-18T16:16:30.123Z] > git remote --verbose [2ms]
+[2022-03-18T16:16:30.155Z] > git config --get commit.template [4ms]

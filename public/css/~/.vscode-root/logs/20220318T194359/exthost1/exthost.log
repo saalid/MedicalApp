@@ -1,0 +1,28 @@
+[2022-03-18 19:44:03.396] [exthost] [info] Extension host with pid 12842 started
+[2022-03-18 19:44:03.699] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2022-03-18 19:44:03.709] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2022-03-18 19:44:03.718] [exthost] [info] ExtensionService#_doActivateExtension vscode.ipynb, startup: true, activationEvent: '*'
+[2022-03-18 19:44:03.819] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2022-03-18 19:44:03.958] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2022-03-18 19:44:04.123] [exthost] [info] Eager extensions activated
+[2022-03-18 19:44:04.190] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2022-03-18 19:44:04.240] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2022-03-18 19:44:16.943] [exthost] [info] extension host terminating: renderer closed the socket
+[2022-03-18 19:44:16.953] [exthost] [info] Extension host with pid 12842 exiting with code 0
+[2022-03-18 19:44:19.912] [exthost] [info] Extension host with pid 12915 started
+[2022-03-18 19:44:19.913] [exthost] [info] Skipping acquiring lock for /var/www/html/MedApp/public/css/~/.vscode-root/User/workspaceStorage/aff1c31730563bceb477bc49a75007dd.
+[2022-03-18 19:44:20.186] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2022-03-18 19:44:20.196] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2022-03-18 19:44:20.199] [exthost] [info] ExtensionService#_doActivateExtension vscode.ipynb, startup: true, activationEvent: '*'
+[2022-03-18 19:44:20.203] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm, startup: true, activationEvent: 'workspaceContains:package.json'
+[2022-03-18 19:44:20.395] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2022-03-18 19:44:20.540] [exthost] [info] Eager extensions activated
+[2022-03-18 19:44:20.548] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2022-03-18 19:44:20.578] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2022-03-18 19:44:20.846] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: 'api', root cause: vscode.github
+[2022-03-18 19:44:30.320] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2022-03-18 19:44:41.237] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-03-18 19:44:41.250] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-03-18 19:44:41.358] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-03-18 19:46:28.199] [exthost] [warning] [Decorations] CAPPING events from decorations provider vscode.git 277
+[2022-03-18 19:46:30.135] [exthost] [warning] [Decorations] CAPPING events from decorations provider vscode.git 277
