@@ -1,16 +1,16 @@
 @extends('admin.layouts.master')
 
 @section('title', 'users')
+@section('breadcrumbs', 'کاربران')
 
 @section('content')
-    <p>کاربران</p>
     <div class="row">
         <div class="col-xs-12">
           <!-- /.box -->
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">جدول داده مثال ۲</h3>
+              <h3 class="box-title">لیست کاربران</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -21,6 +21,7 @@
                   <th>نام</th>
                   <th>ایمیل</th>
                   <th>تاریخ ثبت نام</th>
+                  <th>عملیات</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,13 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->created_at }}</td>
+                            <td><a href="{{ route('users.show', $user->id) }}"><span class="btn btn-warning fa fa-edit pull-right"></span></a>
+                              <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                              @method('DELETE')
+                              @csrf
+                              <button type="submit" class="btn btn-danger fa fa-trash pull-right"></button>
+                            </form>
+                          </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -39,6 +47,7 @@
                     <th>نام</th>
                     <th>ایمیل</th>
                     <th>تاریخ ثبت نام</th>
+                    <th>عملیات</th>
                 </tr>
                 </tfoot>
               </table>
@@ -49,4 +58,21 @@
         </div>
         <!-- /.col -->
       </div>
+@stop
+
+@section('scripts')
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+    
+  </script>
 @stop

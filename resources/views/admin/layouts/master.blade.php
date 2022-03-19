@@ -260,7 +260,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">امیررضا سالاری</span>
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -268,7 +268,7 @@
                 <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  امیررضا سالاری
+                  {{ Auth::user()->name }}
                   <small>مدیریت کل سایت</small>
                 </p>
               </li>
@@ -324,7 +324,7 @@
           <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-right info">
-          <p>امیررضا سالاری</p>
+          <p>{{ Auth::user()->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
         </div>
       </div>
@@ -527,11 +527,10 @@
     <section class="content-header">
       <h1>
         داشبرد
-        <small>کنترل پنل</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> خانه</a></li>
-        <li class="active">داشبرد</li>
+        <li class="active">@yield('breadcrumbs')</li>
       </ol>
     </section>
 
@@ -781,18 +780,7 @@
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 <script src="{{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
+@yield('scripts')
+
 </body>
 </html>
