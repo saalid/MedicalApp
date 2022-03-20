@@ -24,3 +24,8 @@ Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class,
 Route::resources([
     'users' => App\Http\Controllers\Admin\UserController::class,
 ]);
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+    Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
+});

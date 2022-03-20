@@ -356,8 +356,21 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="/users"><i class="fa fa-circle-o"></i>لیست کاربران</a></li>
+              <li><a href="/users/create"><i class="fa fa-circle-o"></i>ایجاد کاربر جدید</a></li>
             </ul>
-          </li>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>نقش ها</span>
+            <span class="pull-left-container">
+              <i class="fa fa-angle-left pull-left"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/roles"><i class="fa fa-circle-o"></i>لیست نقش ها</a></li>
+            <li><a href="/roles/create"><i class="fa fa-circle-o"></i>ایجاد نقش جدید</a></li>
+          </ul>
+      </li>
           
         {{-- <li class="treeview">
           <a href="#">

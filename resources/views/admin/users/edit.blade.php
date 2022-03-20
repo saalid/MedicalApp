@@ -4,33 +4,63 @@
 @section('breadcrumbs', 'کاربران')
 
 @section('content')
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <h3 class="box-title">ویرایش اطلاعات کاربر {{$user->name}}</h3>
+<div class="row">
+  <div class="col-lg-12 margin-tb">
+      <div class="pull-left">
+          <a class="btn btn-primary" href="{{ route('users.index') }}"> برگشت </a>
+      </div>
   </div>
-  <!-- /.box-header -->
-  <!-- form start -->
-  <form role="form" method="POST" action="{{ route('users.update', $user->id) }}">
-    @csrf
-    {{ method_field('PUT') }}
-    <div class="box-body">
-      <div class="form-group">
-        <label for="exampleInputEmail1">نام</label>
-        <input name="name" type="text" class="form-control" value="{{ $user->name }}" placeholder="نام">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">ایمیل</label>
-        <input name="email" type="email" class="form-control" value="{{ $user->email }}"  placeholder="ایمیل">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">رمز عبور</label>
-        <input name="password" type="password" class="form-control" value="{{ $user->password }}" placeholder="رمز عبور">
-      </div>
-    </div>
-    <!-- /.box-body -->
-    <div class="box-footer">
-      <button type="submit" class="btn btn-primary">ارسال</button>
-    </div>
-  </form>
 </div>
+
+
+@if (count($errors) > 0)
+  <div class="alert alert-danger">
+    <strong>اخطار!</strong>بعضی موارد اشتباه است.<br><br>
+    <ul>
+       @foreach ($errors->all() as $error)
+         <li>{{ $error }}</li>
+       @endforeach
+    </ul>
+  </div>
+@endif
+
+
+{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="form-group">
+          <strong>نام:</strong>
+          {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="form-group">
+          <strong>ایمیل:</strong>
+          {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="form-group">
+          <strong>رمز عبور:</strong>
+          {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="form-group">
+          <strong>تکرار رمز عبور:</strong>
+          {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="form-group">
+          <strong>نقش:</strong>
+          {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-primary">ذخیره</button>
+  </div>
+</div>
+{!! Form::close() !!}
+
 @stop
