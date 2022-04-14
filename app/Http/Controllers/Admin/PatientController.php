@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -29,8 +30,8 @@ class PatientController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('admin.users.index',compact('data'))
+        $data = Patient::orderBy('id','DESC')->paginate(5);
+        return view('admin.patients.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     
@@ -42,7 +43,7 @@ class PatientController extends Controller
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        return view('admin.users.create',compact('roles'));
+        return view('admin.patients.create');
     }
     
     /**
@@ -54,20 +55,16 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'national_code' => 'required',
+            'phone_number' => 'required'
         ]);
     
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-    
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('users.index')
-                        ->with('success','کاربر با موفقیت ایجاد شد');
+        Patient::create($input);
+        return redirect()->route('patients.index')
+                        ->with('success','بیمار با موفقیت ایجاد شد');
     }
     
     /**
@@ -78,8 +75,8 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('admin.users.show',compact('user'));
+        $patient = Patient::find($id);
+        return view('admin.patients.show',compact('patient'));
     }
     
     /**

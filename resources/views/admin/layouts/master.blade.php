@@ -329,7 +329,7 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      {{-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="جستجو">
           <span class="input-group-btn">
@@ -337,7 +337,7 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form> --}}
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -379,8 +379,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="/roles"><i class="fa fa-circle-o"></i>لیست بیماران</a></li>
-          <li><a href="/roles/create"><i class="fa fa-circle-o"></i>ایجاد بیمار جدید</a></li>
+          <li><a href="/patients"><i class="fa fa-circle-o"></i>لیست بیماران</a></li>
+          <li><a href="/patients/create"><i class="fa fa-circle-o"></i>ایجاد بیمار جدید</a></li>
         </ul>
     </li>
           

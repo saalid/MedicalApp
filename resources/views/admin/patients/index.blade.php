@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
-@section('title', 'users')
-@section('breadcrumbs', 'کاربران')
+@section('title', 'patients')
+@section('breadcrumbs', 'بیماران')
 
 @section('content')
 
@@ -24,29 +24,25 @@
           <thead>
           <tr>
             <th>آیدی</th>
-            <th>نام</th>
-            <th>ایمیل</th>
-            <th>نقش</th>
+            <th>نام </th>
+            <th>کد ملی</th>
+            <th>شماره تلفن</th>
+            <th>تاریخ </th>
             <th>عملیات</th>
           </tr>
           </thead>
           <tbody>
-              @foreach ($data as $key=>$user)
+              @foreach ($data as $key=>$patient)
                   <tr>
-                      <td>{{ $user->id }}</td>
-                      <td>{{ $user->name }}</td>
-                      <td>{{ $user->email }}</td>
+                      <td>{{ $patient->id }}</td>
+                      <td>{{ $patient->first_name }} {{$patient->last_name}}</td>
+                      <td>{{ $patient->national_code }}</td>
+                      <td>{{ $patient->phone_number }}</td>
+                      <td>{{ $patient->created_at }}</td>  
                       <td>
-                        @if(!empty($user->getRoleNames()))
-                          @foreach($user->getRoleNames() as $v)
-                             <label class="badge badge-success">{{ $v }}</label>
-                          @endforeach
-                        @endif
-                      </td>
-                      <td>
-                        <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">نمایش</a>
-                        <a class="btn btn-warning" href="{{ route('users.edit',$user->id) }}">ویرایش</a>
-                         {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                        <a class="btn btn-info" href="{{ route('patients.show',$patient->id) }}">نمایش</a>
+                        <a class="btn btn-warning" href="{{ route('patients.edit',$patient->id) }}">ویرایش</a>
+                         {!! Form::open(['method' => 'DELETE','route' => ['patients.destroy', $patient->id],'style'=>'display:inline']) !!}
                              {!! Form::submit('حذف', ['class' => 'btn btn-danger']) !!}
                          {!! Form::close() !!}
                      </td>
@@ -55,11 +51,12 @@
           </tbody>
           <tfoot>
           <tr>
-              <th>آیدی</th>
-              <th>نام</th>
-              <th>ایمیل</th>
-              <th>نقش ها</th>
-              <th>عملیات</th>
+            <th>آیدی</th>
+            <th>نام </th>
+            <th>کد ملی</th>
+            <th>شماره تلفن</th>
+            <th>تاریخ </th>
+            <th>عملیات</th>
           </tr>
           </tfoot>
         </table>
@@ -79,14 +76,6 @@
   <script>
     $(function () {
       $('#example1').DataTable()
-      $('#example2').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false
-      })
     })
     
   </script>
