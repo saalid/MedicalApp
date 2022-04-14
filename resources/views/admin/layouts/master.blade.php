@@ -361,7 +361,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user"></i> <span>نقش ها</span>
+            <i class="fa fa-user-md"></i> <span>نقش ها</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
@@ -371,6 +371,18 @@
             <li><a href="/roles/create"><i class="fa fa-circle-o"></i>ایجاد نقش جدید</a></li>
           </ul>
       </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-heartbeat"></i> <span>بیماران</span>
+          <span class="pull-left-container">
+            <i class="fa fa-angle-left pull-left"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="/roles"><i class="fa fa-circle-o"></i>لیست بیماران</a></li>
+          <li><a href="/roles/create"><i class="fa fa-circle-o"></i>ایجاد بیمار جدید</a></li>
+        </ul>
+    </li>
           
         {{-- <li class="treeview">
           <a href="#">

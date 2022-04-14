@@ -17,15 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
-Route::resources([
-    'users' => App\Http\Controllers\Admin\UserController::class,
-]);
+
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
-    Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('patients', App\Http\Controllers\Admin\PatientController::class);
 });
