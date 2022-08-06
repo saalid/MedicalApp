@@ -8,7 +8,7 @@ use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 
 class PatientController extends Controller
