@@ -25,7 +25,7 @@
 @endif
 
 
-{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+{!! Form::model($patient, ['method' => 'PATCH','route' => ['patients.update', $patient->id]]) !!}
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
@@ -49,12 +49,6 @@
       <div class="form-group">
           <strong>تکرار رمز عبور:</strong>
           {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-      </div>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-12">
-      <div class="form-group">
-          <strong>نقش:</strong>
-          {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
       </div>
   </div>
   <div class="col-xs-12 col-sm-12 col-md-12 text-center">

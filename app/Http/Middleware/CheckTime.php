@@ -22,7 +22,6 @@ class CheckTime
         $end = Carbon::createFromTimeString('19:15', 'Asia/Tehran');
         if ($now->between($start, $end)) {
             abort(403, 'Unauthorized action.');
-            // return redirect('/dashboard');
         }
         return $next($request);
     }
