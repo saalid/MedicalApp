@@ -42,8 +42,8 @@ class PatientController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
-        return view('admin.patients.create');
+        $doctors = User::role('پزشک')->get()->pluck('name','id');
+        return view('admin.patients.create',compact('doctors'));
     }
     
     /**

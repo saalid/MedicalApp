@@ -68,6 +68,12 @@
           {!! Form::text('blood_type', null, array('placeholder' => 'گروه خونی','class' => 'form-control')) !!}
       </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="form-group">
+          <strong>دکترها:</strong>
+          {!! Form::select('doctors[]', $doctors,[], array('class' => 'form-control','multiple')) !!}
+      </div>
+  </div>
     <div class="col-xs-1 col-sm-1 col-md-1 text-center">
         <button type="submit" class="btn btn-primary">ذخیره</button>
     </div>
