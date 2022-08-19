@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use App\Events\PatientCreated;
 
 class PatientController extends Controller
 {
@@ -57,15 +58,16 @@ class PatientController extends Controller
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
-            'national_code' => 'required',
+            'national_code' => 'required|unique:patients,national_code',
             'phone_number' => 'required'
         ]);
     
-        $input = $request->all();
-        dd($input);
+        $input = $request->all();;
         $id  = Patient::create($input)->id;
-        //$user->events()->sync([$request->event_id]);
-
+        if(isset($input['doctors'])){
+            $doctors = $input['doctors'];
+            event(new PatientCreated($id, $doctors));
+        }
         return redirect()->route('patients.index')
                         ->with('success','بیمار با موفقیت ایجاد شد');
     }
