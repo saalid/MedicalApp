@@ -62,7 +62,10 @@ class PatientController extends Controller
         ]);
     
         $input = $request->all();
-        Patient::create($input);
+        dd($input);
+        $id  = Patient::create($input)->id;
+        //$user->events()->sync([$request->event_id]);
+
         return redirect()->route('patients.index')
                         ->with('success','بیمار با موفقیت ایجاد شد');
     }

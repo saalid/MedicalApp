@@ -46,4 +46,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('Spatie\Permission\Models\Role');
     }
+
+    /**
+     * The patients that belong to the user.
+     */
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class);
+    }
 }

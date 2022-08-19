@@ -24,4 +24,12 @@ class Patient extends Model
         'weight',
         'blood_type',
     ];
+
+    /**
+     * The users that belong to the patient.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
