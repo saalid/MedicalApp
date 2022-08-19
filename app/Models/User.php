@@ -52,6 +52,6 @@ class User extends Authenticatable
      */
     public function patients()
     {
-        return $this->belongsToMany(Patient::class);
+        return $this->belongsToMany(Patient::class, 'patients_user');
     }
 }

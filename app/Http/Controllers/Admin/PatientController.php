@@ -81,7 +81,11 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient = Patient::find($id);
-        return view('admin.patients.show',compact('patient'));
+        $doctors = [];
+        foreach ($patient->users as $user) {
+            $doctors[] = $user;
+        }
+        return view('admin.patients.show',compact('patient', 'doctors'));
     }
     
     /**
@@ -93,7 +97,12 @@ class PatientController extends Controller
     public function edit($id)
     {
         $patient = Patient::find($id);
-        return view('admin.patients.edit',compact('patient'));
+        $doctors = User::role('پزشک')->get()->pluck('name','id');
+        $doctorsPatient = [];
+        foreach ($patient->users as $user) {
+            $doctorsPatient[] = $user->id;
+        }
+        return view('admin.patients.edit',compact('patient', 'doctors', 'doctorsPatient'));
     }
     
     /**
@@ -106,27 +115,22 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'national_code' => 'required|unique:patients,national_code,'.$id,
+            'phone_number' => 'required'
         ]);
-    
         $input = $request->all();
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
+        $patient = Patient::find($id);
+        $patient->update($input);
+        $patient->users()->detach();
+        if(isset($input['doctors'])){
+            $doctors = $input['doctors'];
+            event(new PatientCreated($id, $doctors));
         }
     
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
-        $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('users.index')
-                        ->with('success','کاربر با موفقیت ویرایش شد');
+        return redirect()->route('patients.index')
+                        ->with('success','بیمار با موفقیت ویرایش شد');
     }
     
     /**
@@ -137,9 +141,11 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('users.index')
-                        ->with('success','کاربر با موفقیت حذف شد');
+        $patient = Patient::find($id);
+        $patient->users()->detach();
+        $patient->delete();
+        return redirect()->route('patients.index')
+                        ->with('success','بیمار با موفقیت حذف شد');
     }
 
 }

@@ -47,6 +47,17 @@
             {{ $patient->weight }}
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>دکتر ها:</strong>
+            {{-- <label class="badge badge-success">{{ $doctors->name }}</label> --}}
+            @if(!empty($doctors))
+                @foreach($doctors as $doctor)
+                    <label class="badge badge-success">{{ $doctor->name }}</label>
+                @endforeach
+            @endif
+        </div>
+    </div>
 </div>
 
 @stop
