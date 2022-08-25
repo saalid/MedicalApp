@@ -69,7 +69,7 @@
 </div>
 
 
-{!! $data->render() !!}
+
 @stop
 
 @section('scripts')

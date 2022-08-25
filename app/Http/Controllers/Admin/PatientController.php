@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Patient;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use App\Events\PatientCreated;
+use App\Models\Patient;
+use App\Models\User;
+
 
 class PatientController extends Controller
 {
@@ -31,7 +33,8 @@ class PatientController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Patient::orderBy('id','DESC')->paginate(5);
+        $obj = new Patient();
+        $data = $obj->getPatients();
         return view('admin.patients.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
